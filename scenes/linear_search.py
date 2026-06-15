@@ -1,3 +1,4 @@
+import code
 import os
 from runpy import run_path
 import sys
@@ -10,12 +11,12 @@ from components.pointer import Pointer
 class LinearSearch(Scene):
     def construct(self):
         # First Scene: Title
-        # title = Text("Linear Search")
-        # self.play(Write(title))
-        # self.wait()
+        title = Text("Linear Search")
+        self.play(Write(title))
+        self.wait()
 
-        # self.play(title.animate.to_corner(UL))
-        # self.wait()
+        self.play(title.animate.to_corner(UL))
+        self.wait()
 
 
         # Second Scene: Code
@@ -31,8 +32,8 @@ class LinearSearch(Scene):
         self.wait()
 
 
-        # Third Scene: Array and Indices
-        values = [3, 9, 14, 21, 27, 34, 42, 45, 52, 58, 63, 66, 71, 75, 79, 83, 88, 91, 95, 99]
+        # Third Scene: Array and Indices Setup
+        values = [52, 3, 91, 27, 75, 14, 99, 42, 66, 9, 88, 34, 71, 21, 95, 58, 45, 83, 63, 79]
         cells = VGroup(*[
             ArrayCell(v, color=BLUE, side_length=0.5)
             for v in values
@@ -61,13 +62,13 @@ class LinearSearch(Scene):
             ),
             run_time=2
         )
-
         self.wait()
 
-        # Fourth Scene: Pointer
-        pointer = Pointer(label="i", color=DARK_BROWN, start=DOWN, end=UP, textPos=DOWN)
-        pointer.next_to(cells[0], DOWN).scale(0.7).shift(UP * 0.5)
-        self.play(Create(pointer))
+        # Fourth Scene: Target, Equation, Pointer and Codeblock Setup
+        self.play(cells[13].animate.set_fill(YELLOW, opacity=0.3))
+        target = Text("Target: 21", font_size=24)
+        target.to_corner(DL).shift(UP * 0.5)
+        self.play(Write(target))
         self.wait()
 
         highlight = SurroundingRectangle(
@@ -76,5 +77,145 @@ class LinearSearch(Scene):
             buff=0.1
         )
 
-        self.play(Create(highlight))
+        pointer = Pointer(label="i", color=DARK_BROWN, start=DOWN, end=UP, textPos=DOWN)
+        pointer.scale(0.5)
+        pointer.next_to(cells[0], DOWN)
+        self.play(Create(pointer), Create(highlight))
+        self.wait()
+
+
+        self.play(highlight.animate.become(SurroundingRectangle(
+            code.code_lines[5],
+        )))
+        self.wait()
+
+        equation = MathTex("52 \\neq 21", font_size=24)
+        equation.to_corner(DL)
+        self.play(Write(equation))
+        self.wait()
+
+        self.play(
+            pointer.animate.next_to(cells[1], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)))
+        self.wait()
+
+        self.play(equation.animate.become(MathTex("3 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+
+        self.play(
+            pointer.animate.next_to(cells[2], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)))
+        self.wait()
+
+        self.play(equation.animate.become(MathTex("91 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+
+        self.play(
+            pointer.animate.next_to(cells[3], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)), 
+                  equation.animate.become(MathTex("27 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()        
+
+        self.play(
+            pointer.animate.next_to(cells[4], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)),
+                  equation.animate.become(MathTex("75 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+        self.play(
+            pointer.animate.next_to(cells[5], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)),
+                  equation.animate.become(MathTex("14 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+        self.play(
+            pointer.animate.next_to(cells[6], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)),
+                  equation.animate.become(MathTex("99 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+        self.play(
+            pointer.animate.next_to(cells[7], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)),
+                  equation.animate.become(MathTex("42 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+        self.play(
+            pointer.animate.next_to(cells[8], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)),
+                  equation.animate.become(MathTex("66 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+        self.play(
+            pointer.animate.next_to(cells[9], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)),
+                  equation.animate.become(MathTex("9 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+        self.play(
+            pointer.animate.next_to(cells[10], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)),
+                  equation.animate.become(MathTex("88 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+        self.play(
+            pointer.animate.next_to(cells[11], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)),
+                  equation.animate.become(MathTex("34 \\neq 21", font_size=24).to_corner(DL)))
+        self.wait()
+
+        self.play(
+            pointer.animate.next_to(cells[12], DOWN),
+            highlight.animate.become(SurroundingRectangle(code.code_lines[4], color=YELLOW, buff=0.1))
+        )
+        self.wait()
+
+        self.play(highlight.animate.become(SurroundingRectangle(code.code_lines[5], color=YELLOW, buff=0.1)),
+                  equation.animate.become(MathTex("71 \\neq 21", font_size=24).to_corner(DL)))
         self.wait()
