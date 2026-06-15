@@ -1,0 +1,19 @@
+
+# class NameOfAnimation(Scene):
+#     def construct(self):
+
+#         axes = Axes(x_range=[-3, 3, 1], y_range=[-3, 3, 1], x_length=6, y_length=6)
+#         axes.to_corner(DL, buff=-1)
+
+#         circle = Circle(radius=1, stroke_color=RED, fill_color=RED, fill_opacity=0.5)
+#         # circle.move_to(axes.coords_to_point(0, 0))
+#         circle.set_width(2).to_edge(DL, buff=2)
+
+#         triangle = Triangle(stroke_color = ORANGE, stroke_width = 10, fill_color = GREY).set_height(2).shift(DOWN*3 + RIGHT*3)
+
+#         box = Rectangle(stroke_color=GREEN, fill_color=BLUE, fill_opacity=0.5, width=1, height=1)        
+        
+#         self.play(Write(axes))
+#         self.play(DrawBorderThenFill(circle))
+#         self.play(circle.animate.set_width(1))
+#         self.play(Transform(circle, triangle), run_time=3)
