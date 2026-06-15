@@ -5,7 +5,7 @@ class ArrayCell(VGroup):
         super().__init__()
 
         self.box = Square(side_length=side_length, color=color)
-        self.text = Text(str(value), font_size=28)
+        self.text = Text(str(value), font_size=28).scale(0.6)
 
         self.text.move_to(self.box.get_center())
 

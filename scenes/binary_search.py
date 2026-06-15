@@ -6,11 +6,11 @@ from manim import *
 from components.array_cell import ArrayCell 
 from components.pointer import Pointer
 
-class Demo(Scene):
+class BinarySearch(Scene):
     def construct(self):
 
         code = Code(
-            code_file="./code/binary_search.py",
+            code_file="./code/p0002_binary_search.py",
             language="python"
         )
         code.scale(0.6)
