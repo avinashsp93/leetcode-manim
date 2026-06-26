@@ -1,5 +1,4 @@
 from manim import *
-from scenes.demo import Demo
 
 def main():    
     print("Welcome to Manim")
